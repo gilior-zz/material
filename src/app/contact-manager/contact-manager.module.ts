@@ -9,6 +9,8 @@ import { SideNavComponent } from './components/side-nav/side-nav.component';
 import {MaterialModule} from "../shared/material.module";
 import {FormsModule} from "@angular/forms";
 import {FlexLayoutModule} from "@angular/flex-layout";
+import {UserService} from "./services/user.service";
+import {HttpClientModule} from "@angular/common/http";
 
 @NgModule({
   imports: [
@@ -16,8 +18,10 @@ import {FlexLayoutModule} from "@angular/flex-layout";
     ContactManagerRoutingModule,
       MaterialModule,
       FlexLayoutModule,
-      FormsModule
+      FormsModule,
+      HttpClientModule
   ],
-  declarations: [AppComponent, ToolbarComponent, MainContentComponent, SideNavComponent]
+  declarations: [AppComponent, ToolbarComponent, MainContentComponent, SideNavComponent],
+    providers:[UserService]
 })
 export class ContactManagerModule { }

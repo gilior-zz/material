@@ -5,11 +5,12 @@ import {MainContentComponent} from "./components/main-content/main-content.compo
 
 const routes: Routes = [
     {
-        path: 'app', component: AppComponent, children: [
-        {path: '', component: MainContentComponent},
-    ]
+        path: 'users', component: AppComponent, children:
+        [
+            {path: ':id', component: MainContentComponent},
+        ]
     },
-    {path: '', redirectTo: 'app'}
+    {path: '', pathMatch: 'full', redirectTo: 'users'}
 ];
 
 @NgModule({

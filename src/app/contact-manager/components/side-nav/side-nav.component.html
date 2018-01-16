@@ -4,21 +4,26 @@
         <mat-toolbar Color="primary">
             Contacts
         </mat-toolbar>
-        <mat-list role="list">
-            <mat-list-item role="listitem">Item 1</mat-list-item>
-            <mat-list-item role="listitem">Item 2</mat-list-item>
-            <mat-list-item role="listitem">Item 3</mat-list-item>
-        </mat-list>
+        <mat-nav-list>
+            <mat-list-item *ngFor="let user of users$|async">
+                <a matLine [routerLink]="user.id">
+                    <mat-icon svgIcon="{{user.avatar}}"></mat-icon>
+                    {{user.name}}
+                </a>
+
+
+            </mat-list-item>
+        </mat-nav-list>
 
 
     </mat-sidenav>
 
     <div class="nav-content">
-        <toolbar></toolbar>
-        <router-outlet></router-outlet>
-        <button type="button" mat-button (click)="sidenav.toggle()">
-            Open sidenav
-        </button>
+        <toolbar (toggleSideNav)="sidenav.toggle()"></toolbar>
+        <div class="router-outlet">
+            <router-outlet></router-outlet>
+        </div>
+
     </div>
 
 </mat-sidenav-container>
