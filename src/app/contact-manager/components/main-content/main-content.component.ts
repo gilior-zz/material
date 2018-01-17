@@ -21,15 +21,16 @@ export class MainContentComponent implements OnInit {
         , private  userService: UserService) {
         this.activatedRoute.paramMap
             .subscribe((params: ParamMap) => {
-                this.id = +params.get('id');
+                this.id = +params.get('id') || 1;
+                this.user = null;
                 console.log(this.id);
                 this.user = this.userService.getById(this.id);
             });
     }
 
     ngOnInit() {
-        this.userService.users.subscribe(users=>{
-            this.user=users.find(i=>i.id===this.id)
+        this.userService.users.subscribe(users => {
+            this.user = users.find(i => i.id === this.id)
         })
 
     }

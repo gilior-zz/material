@@ -13,7 +13,7 @@ import {MatSidenav} from "@angular/material";
     styleUrls: ['./side-nav.component.scss']
 })
 export class SideNavComponent implements OnInit {
-    @ViewChild(MatSidenav) matSidenav:MatSidenav
+    @ViewChild(MatSidenav) matSidenav: MatSidenav
     mediaQueryList: MediaQueryList = matchMedia(`(max-width:${SMALL_WIDTH_BREAKPOINT}px)`)
     users$: Observable<User[]>;
     private id: number;
@@ -48,14 +48,17 @@ export class SideNavComponent implements OnInit {
     ngOnInit() {
         this.users$ = this.userService.users;
         this.userService.loadall();
-        this.users$.subscribe(i => {
-            if (i.length > 0)
-                this.router.navigate(['contactManager/users', i[0].id])
-        })
+        // this.users$.subscribe(i => {
+        //     if (i.length > 0)
+        //         setTimeout(() => {
+        //             this.router.navigate(['contactManager/users', i[0].id])
+        //         }, 500)
+        //
+        // });
 
-        this.router.events.subscribe(()=>{
+        this.router.events.subscribe(() => {
             if (this.mediaQueryList.matches)
-this.matSidenav.close()
+                this.matSidenav.close()
         })
 
     }

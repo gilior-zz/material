@@ -1,6 +1,6 @@
 <mat-sidenav-container class="nav-container">
 
-    <mat-sidenav #sidenav class="nav-sidenav mat-elevation-z15" [opened]="opened" [mode]="mode">
+    <mat-sidenav #mysidenav class="nav-sidenav mat-elevation-z15" [opened]="opened" [mode]="mode">
         <mat-toolbar Color="primary">
             Contacts
         </mat-toolbar>
@@ -19,7 +19,7 @@
     </mat-sidenav>
 
     <div class="nav-content">
-        <toolbar (toggleSideNav)="sidenav.toggle()"></toolbar>
+        <toolbar (toggleSideNav)="mysidenav.toggle()"></toolbar>
         <div class="router-outlet">
             <router-outlet></router-outlet>
         </div>
