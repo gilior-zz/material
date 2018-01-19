@@ -16,6 +16,8 @@ export class SideNavComponent implements OnInit {
     @ViewChild(MatSidenav) matSidenav: MatSidenav
     mediaQueryList: MediaQueryList = matchMedia(`(max-width:${SMALL_WIDTH_BREAKPOINT}px)`)
     users$: Observable<User[]>;
+    isLtr:boolean=true;
+    isDarkTheme:boolean=false;
     private id: number;
 
     constructor(ngZone: NgZone, private userService: UserService, private  activatedRoute: ActivatedRoute, public  router: Router) {
@@ -61,6 +63,14 @@ export class SideNavComponent implements OnInit {
                 this.matSidenav.close()
         })
 
+    }
+
+
+    toggleDir() {
+        this.isLtr = !this.isLtr;
+        this.matSidenav.toggle().then(() => {
+            this.matSidenav.toggle()
+        })
     }
 
 }

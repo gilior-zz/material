@@ -11,6 +11,8 @@ import {ActivatedRoute, Router} from "@angular/router";
 })
 export class ToolbarComponent implements OnInit {
     @Output() toggleSideNav: EventEmitter<void> = new EventEmitter<void>();
+    @Output() toggleTheme: EventEmitter<void> = new EventEmitter<void>();
+    @Output() toggleDir: EventEmitter<void> = new EventEmitter<void>();
 
     constructor(public dialog: MatDialog
         , private snackBar: MatSnackBar
@@ -27,7 +29,7 @@ export class ToolbarComponent implements OnInit {
                 let snack = this.openSnackBar(result, 'navigate');
                 snack.onAction().subscribe(() => {
 // Relative navigation back to the crises
-                    this.router.navigate(['./',result.id], { relativeTo: this.activatedRoute });
+                    this.router.navigate(['./', result.id], {relativeTo: this.activatedRoute});
                 })
             }
             console.log(`Dialog result`, result); // Pizza!
@@ -47,5 +49,6 @@ export class ToolbarComponent implements OnInit {
     openDlg() {
 
     }
+
 
 }

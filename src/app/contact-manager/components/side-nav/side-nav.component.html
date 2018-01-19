@@ -1,4 +1,4 @@
-<mat-sidenav-container class="nav-container">
+<mat-sidenav-container [class.dark-theme]="isDarkTheme" class="nav-container" [dir]="isLtr?'ltr':'rtl'">
 
     <mat-sidenav #mysidenav class="nav-sidenav mat-elevation-z15" [opened]="opened" [mode]="mode">
         <mat-toolbar Color="primary">
@@ -19,7 +19,8 @@
     </mat-sidenav>
 
     <div class="nav-content">
-        <toolbar (toggleSideNav)="mysidenav.toggle()"></toolbar>
+        <toolbar (toggleDir)="toggleDir()" (toggleTheme)="isDarkTheme=!isDarkTheme"
+                 (toggleSideNav)="mysidenav.toggle()"></toolbar>
         <div class="router-outlet">
             <router-outlet></router-outlet>
         </div>
