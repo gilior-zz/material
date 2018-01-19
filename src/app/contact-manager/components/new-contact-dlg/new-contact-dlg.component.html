@@ -1,0 +1,44 @@
+<h2 mat-dialog-title>Delete all</h2>
+<mat-dialog-content>
+
+        <div class="example-container">
+            <mat-form-field>
+                <mat-select [(ngModel)]="user.avatar" placeholder="avatar">
+                    <mat-select-trigger>
+                        <mat-icon svgIcon="{{user.avatar}}"></mat-icon>
+                        {{user.avatar}}
+                    </mat-select-trigger>
+                    <mat-option *ngFor="let ava of avatars" [value]="ava">
+                        <mat-icon svgIcon="{{ava}}"></mat-icon>
+                        {{ava}}
+                    </mat-option>
+                </mat-select>
+            </mat-form-field>
+            <mat-form-field>
+                <input #name="ngModel"  [(ngModel)]="user.name"  matInput placeholder="name" required>
+                <mat-error *ngIf="name.invalid">You must enter a name</mat-error>
+            </mat-form-field>
+
+            <mat-form-field>
+                <textarea [(ngModel)]="user.bio" matInput placeholder="bio"></textarea>
+            </mat-form-field>
+
+            <mat-form-field>
+                <input matInput [matDatepicker]="picker" [(ngModel)]="user.birthDate" placeholder="Choose a date">
+                <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                <mat-datepicker #picker></mat-datepicker>
+            </mat-form-field>
+
+        </div>
+
+</mat-dialog-content>
+<mat-dialog-actions>
+    <button color="primary" (click)="save()" mat-button mat-dialog-close>
+        <mat-icon>save</mat-icon>
+        save
+    </button>
+    <button color="primary" mat-button mat-dialog-close>
+        <mat-icon>cancel</mat-icon>
+        cancel
+    </button>
+</mat-dialog-actions>
